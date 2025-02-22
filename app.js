@@ -2,7 +2,7 @@ const path = require('path');
 const express = require('express');
 const { createProxyMiddleware } = require('http-proxy-middleware');
 
-let apiServer = 'http://10.100.0.24:80';
+let apiServer = 'http://10.100.0.24:8000';
 
 if (process.env.NODE_ENV === 'test') {
   apiServer = 'http://notfound';
