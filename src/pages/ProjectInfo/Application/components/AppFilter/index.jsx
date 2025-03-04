@@ -100,6 +100,7 @@ const AppFilter = ({
               defaultValue={filterInfo.envname}
               value={filterInfo.envname}
             >
+              <Radio.Button value="dev">DEV</Radio.Button>
               <Radio.Button value="test">TEST</Radio.Button>
               {/* <Radio.Button value="fat">FAT</Radio.Button> */}
               <Radio.Button value="prod">PROD</Radio.Button>

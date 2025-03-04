@@ -87,6 +87,10 @@ const TableList = (props) => {
           text: 'fat',
           env_name: 'fat',
         },
+        dev: {
+          text: 'dev',
+          env_name: 'dev',
+        },
       },
       // hideInSearch:true
     },

@@ -10,6 +10,8 @@ export function isMaintainer(memberRole) {
 
 export function hasMaintainerPermission(memberRole, envname) {
   switch (envname) {
+    case 'dev':
+      return isDeveloper(memberRole);
     case 'test':
       return isDeveloper(memberRole);
     case 'fat':
@@ -23,6 +25,8 @@ export function hasMaintainerPermission(memberRole, envname) {
 
 export function hasDeveloperPermission(memberRole, envname) {
   switch (envname) {
+    case 'dev':
+      return isDeveloper(memberRole);
     case 'test':
       return isDeveloper(memberRole);
     case 'fat':
