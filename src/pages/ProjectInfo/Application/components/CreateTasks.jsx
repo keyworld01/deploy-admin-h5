@@ -247,6 +247,8 @@ const CreateTasks = (props) => {
             metrics_port: latestSetting?.metrics_port || undefined,
             config_rename_prefix: latestSetting?.config_rename_prefix || '',
             config_rename_mode: latestSetting?.config_rename_mode || undefined,
+            log_path: latestSetting?.log_path ?? '',
+            log_file_pattern: latestSetting?.log_file_pattern ?? ''
           });
           setIsAutoScale(latestSetting.is_auto_scale || false);
         })
@@ -418,6 +420,8 @@ const CreateTasks = (props) => {
       readiness_probe_initial_delay_seconds: 10,
       liveness_probe_initial_delay_seconds: 10,
       disable_canary: false,
+      log_path: '',
+      log_file_pattern: ''
     }),
     [defaultClusterName, application]
   );
@@ -1181,6 +1185,12 @@ const CreateTasks = (props) => {
           >
             <InputNumber min={10} />
           </Form.Item>
+          <FormItem name="log_path" label="日志路径">
+            <Input placeholder="请输入日志路径" />
+          </FormItem>
+          <FormItem name="log_file_pattern" label="日志文件通配符">
+              <Input placeholder="请输入日志文件通配符" />
+            </FormItem>
         </div>
       </Form>
     </Modal>
