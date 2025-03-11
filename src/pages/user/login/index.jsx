@@ -39,7 +39,7 @@ const Login = (props) => {
 
         <UserName
           name="userName"
-          placeholder="用户名: git用户名"
+          placeholder="用户名"
           rules={[
             {
               required: true,
@@ -49,7 +49,7 @@ const Login = (props) => {
         />
         <Password
           name="password"
-          placeholder="密码: git密码"
+          placeholder="密码"
           rules={[
             {
               required: true,
