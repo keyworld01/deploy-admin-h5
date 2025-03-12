@@ -1186,10 +1186,10 @@ const CreateTasks = (props) => {
             <InputNumber min={10} />
           </Form.Item>
           <FormItem name="log_path" label="日志路径">
-            <Input placeholder="请输入日志路径" />
+            <Input placeholder="请输入日志路径（标准输出可不填）" />
           </FormItem>
           <FormItem name="log_file_pattern" label="日志文件通配符">
-              <Input placeholder="请输入日志文件通配符" />
+              <Input placeholder="请输入日志文件通配符（标准输出可不填）" />
             </FormItem>
         </div>
       </Form>
