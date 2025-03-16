@@ -23,6 +23,7 @@ const formLayout = {
     span: 13,
   },
 };
+const availableEnvs = ['dev', 'test', 'prod'] 
 
 const UpdateForm = ({
   onSubmit: handleUpdate,
@@ -91,11 +92,6 @@ const UpdateForm = ({
       return;
     }
 
-    // 新构建参数
-    form.setFieldsValue({
-      build_arg: imageArgs && imageArgs[value] ? imageArgs[value] : '',
-    });
-
     // getProjectSuccessImagesInfo(formVals.projectId, value).then( res=> {
     //     if(res && res.length > 0) {
     //       form.setFieldsValue({
@@ -114,6 +110,18 @@ const UpdateForm = ({
         }
       }
     });
+  };
+
+  const envChange = (value) => {
+    if (!formVals.projectId || !value) {
+      return;
+    }
+
+    // 新构建参数
+    form.setFieldsValue({
+      build_arg: imageArgs && imageArgs[value] ? imageArgs[value] : '',
+    });
+
   };
 
   return (
@@ -145,6 +153,7 @@ const UpdateForm = ({
           // type: formVals.type,
           build_arg_type: 'custom',
           build_arg: '',
+          env: '',
         }}
       >
         <FormItem
@@ -189,13 +198,45 @@ const UpdateForm = ({
         >
           <Input placeholder="" disabled />
         </FormItem>
-        <FormItem name="build_arg_type" label="构建参数类型">
-          <Radio.Group>
-            <Radio value="custom">自定义</Radio>
-            <Radio value="template">模板</Radio>
-          </Radio.Group>
+
+        {imageArgs && Object.keys(imageArgs).length > 0 && (<FormItem name="env" label="应用环境">
+          <Select
+            onChange={envChange}
+          >
+            {Object.keys(imageArgs)
+                .sort((x, y) => availableEnvs.indexOf(x) - availableEnvs.indexOf(y))
+                .map((key) => {
+                return (
+                  <Option key={key} value={key}>
+                    {key.toUpperCase()}
+                  </Option>
+                );
+            })}
+          </Select>
         </FormItem>
-        <FormItem
+        )}
+
+        <FormItem 
+          name="build_arg" 
+          label={
+            <>
+              构建参数&nbsp;
+              <Tooltip title='docker build --build-arg' placement="topRight">
+                <QuestionCircleOutlined />
+              </Tooltip>
+            </>
+          }
+        >
+          <Input />
+        </FormItem>
+
+        {/* <FormItem name="build_arg_type" label="构建参数类型"> */}
+          {/* <Radio.Group> */}
+            {/* <Radio value="custom">自定义</Radio> */}
+            {/* <Radio value="template">模板</Radio> */}
+          {/* </Radio.Group> */}
+        {/* </FormItem> */}
+        {/* <FormItem
           noStyle
           shouldUpdate={(prevValues, curValues) =>
             prevValues.build_arg_type !== curValues.build_arg_type
@@ -229,10 +270,10 @@ const UpdateForm = ({
 
             return null;
           }}
-        </FormItem>
-        <FormItem name="description" label="描述">
+        </FormItem> */}
+        {/* <FormItem name="description" label="描述">
           <Input.TextArea />
-        </FormItem>
+        </FormItem> */}
       </Form>
     </Modal>
   );
