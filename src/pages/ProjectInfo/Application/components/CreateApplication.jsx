@@ -123,7 +123,7 @@ const CreateApplication = (props) => {
                   return Promise.reject(
                     new Error(
                       `超出最大字符限制，不能超过${
-                        50 - (projectInfo.name.length + 16)
+                        63 - (projectInfo.name.length + 1)
                       }字`
                     )
                   );
