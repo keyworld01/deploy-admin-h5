@@ -697,15 +697,13 @@ const RunItem = ({
               >
                 状态
               </a>
-
-              {/*<a*/}
-              {/*  target="_blank"*/}
-              {/*  rel="noopener noreferrer"*/}
-              {/*  href={item.shell_url}*/}
-              {/*>*/}
-              {/*  {' '}*/}
-              {/*  shell{' '}*/}
-              {/*</a>*/}
+              <a
+                target="_blank"
+                rel="noopener noreferrer"
+                href={item.shell_url}
+              >
+                shell
+              </a>
               {item.phase !== 'Failed' && projectInfo?.language === 'Go' && (
                 <a
                   onClick={() => handleCreatePprof(item, running, application)}
@@ -867,13 +865,13 @@ const RunItem = ({
                       状态
                     </a>
 
-                    {/*<a*/}
-                    {/*  target="_blank"*/}
-                    {/*  rel="noopener noreferrer"*/}
-                    {/*  href={item.shell_url}*/}
-                    {/*>*/}
-                    {/*  shell*/}
-                    {/*</a>*/}
+                    <a
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      href={item.shell_url}
+                    >
+                      shell
+                    </a>
                     {projectInfo?.language === 'Go' && (
                       <a
                         onClick={() =>
