@@ -118,7 +118,7 @@ const CreateApplication = (props) => {
                 }
                 if (
                   value &&
-                  value.length > 50 - (projectInfo.name.length + 16)
+                  value.length > 63 - (projectInfo.name.length + 1)
                 ) {
                   return Promise.reject(
                     new Error(
