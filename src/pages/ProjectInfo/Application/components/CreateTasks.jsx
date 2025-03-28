@@ -248,7 +248,9 @@ const CreateTasks = (props) => {
             config_rename_prefix: latestSetting?.config_rename_prefix || '',
             config_rename_mode: latestSetting?.config_rename_mode || undefined,
             log_path: latestSetting?.log_path ?? '',
-            log_file_pattern: latestSetting?.log_file_pattern ?? ''
+            log_file_pattern: latestSetting?.log_file_pattern ?? '',
+            liveness_probe_initial_delay_seconds: latestSetting?.liveness_probe_initial_delay_seconds ?? 10,
+            readiness_probe_initial_delay_seconds: latestSetting?.readiness_probe_initial_delay_seconds ?? 10
           });
           setIsAutoScale(latestSetting.is_auto_scale || false);
         })
