@@ -5,7 +5,7 @@ const { createProxyMiddleware } = require('http-proxy-middleware');
 let apiServer = 'http://10.100.0.24:8000';
 
 if (process.env.NODE_ENV === 'test') {
-  apiServer = 'http://notfound';
+  apiServer = 'http://flow-api.test.svc.cluster.local';
 }
 
 const app = express();
