@@ -204,12 +204,12 @@ const Edit = () => {
           </FormItem>
 
           {projectId ? (
-            <FormItem label="GitProjectID" name="git_project_id">
-              <Input placeholder="请输入项目名称" disabled={!!projectId} />
+            <FormItem label="GitRepoID" name="git_project_id">
+              <Input placeholder="请输入项目对应的 GitRepoID" disabled={!!projectId} />
             </FormItem>
           ) : (
             <FormItem
-              label="GitProjectID"
+              label="GitRepoID"
               name="git_project_id"
               onBlur={onGit}
               validateStatus={gitValidatorInfo.validateStatus}
@@ -217,11 +217,11 @@ const Edit = () => {
               rules={[
                 {
                   required: true,
-                  message: '项目对应的 GitProjectID 为必填项',
+                  message: '项目对应的 GitRepoID 为必填项',
                 },
               ]}
             >
-              <Input placeholder="请输入项目对应的 GitProjectID" />
+              <Input placeholder="请输入项目对应的 GitRepoID" />
             </FormItem>
           )}
 
