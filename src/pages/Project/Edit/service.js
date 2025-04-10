@@ -19,8 +19,8 @@ export async function getProjectInfo(projectId) {
   return ServiceManager.get(`/amsapi/api/v1/projects/${projectId}`);
 }
 
-export async function getGitInfobyid(git_id) {
-  return ServiceManager.get(`/amsapi/api/v1/git/projects/${git_id}`);
+export async function getGitInfobyid(git_id, project_id) {
+  return ServiceManager.get(`/amsapi/api/v1/git/${git_id}/projects/${project_id}`);
 }
 
 export async function getTeams() {
@@ -34,4 +34,8 @@ export async function getTeams() {
 // 获取所有对应项目label映射关系
 export const getAllProjectLabels = async () => {
   return ServiceManager.get('/amsapi/api/v1/project_labels');
+};
+
+export const getGits = async () => {
+  return ServiceManager.get('/amsapi/api/v1/gits');
 };

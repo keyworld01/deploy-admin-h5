@@ -21,6 +21,8 @@ import { getProjectImagesInfo, deleteImagesBuild } from '../service';
 import { hasDeveloperPermission } from '../utils/hasPermission';
 
 const NewImages = ({
+  gitId,
+  gitProjectId,
   projectId,
   buildImage,
   memberRole,
@@ -194,6 +196,8 @@ const NewImages = ({
         }}
         modalVisible={createModalVisible}
         projectId={projectId}
+        gitId={gitId}
+        gitProjectId={gitProjectId}
         imageArgs={imageArgs}
         imageArgTemplates={imageArgTemplates}
       />

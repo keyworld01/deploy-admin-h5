@@ -263,6 +263,8 @@ const Application = (props) => {
       extraContent={
         <NewImages
           projectId={projectId}
+          gitId={projectInfo?.git_id}
+          gitProjectId={projectInfo?.git_project_id}
           filterInfo={filterInfo}
           buildImage={buildImage}
           memberRole={memberRole}

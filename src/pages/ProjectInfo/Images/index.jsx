@@ -3,7 +3,7 @@ import React, { useState, useRef, useEffect, useCallback } from 'react';
 import { PageHeaderWrapper } from '@ant-design/pro-layout';
 import ProTable from '@ant-design/pro-table';
 import StatusIcon from '@/components/StatusIcon';
-import { queryGitInfo } from '@/services/git';
+import { queryGitInfoByProject } from '@/services/git';
 import showBuildLogModal from '@/utils/showBuildLogModal';
 import { queryRule } from './service';
 
@@ -102,7 +102,7 @@ const TableList = (props) => {
 
   useEffect(() => {
     async function fetchData() {
-      const response = await queryGitInfo(projectId);
+      const response = await queryGitInfoByProject(projectId);
       return response;
     }
 
