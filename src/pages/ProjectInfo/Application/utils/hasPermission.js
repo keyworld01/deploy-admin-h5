@@ -18,6 +18,8 @@ export function hasMaintainerPermission(memberRole, envname) {
       return isDeveloper(memberRole);
     case 'prod':
       return isMaintainer(memberRole);
+    case 'pre':
+      return isMaintainer(memberRole);
     default:
       return false;
   }
@@ -32,6 +34,8 @@ export function hasDeveloperPermission(memberRole, envname) {
     case 'fat':
       return isDeveloper(memberRole);
     case 'prod':
+      return isDeveloper(memberRole);
+    case 'pre':
       return isDeveloper(memberRole);
     default:
       return false;

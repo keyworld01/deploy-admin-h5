@@ -93,6 +93,10 @@ const TableList = (props) => {
           text: 'prod',
           env_name: 'prod',
         },
+        prod: {
+          text: 'pre',
+          env_name: 'pre',
+        },
         fat: {
           text: 'fat',
           env_name: 'fat',

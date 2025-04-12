@@ -23,7 +23,7 @@ const formLayout = {
     span: 13,
   },
 };
-const availableEnvs = ['dev', 'test', 'prod'] 
+const availableEnvs = ['dev', 'test', 'prod', 'pre'] 
 
 const UpdateForm = ({
   onSubmit: handleUpdate,
