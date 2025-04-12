@@ -199,7 +199,7 @@ const UpdateForm = ({
           <Input placeholder="" disabled />
         </FormItem>
 
-        {imageArgs && Object.keys(imageArgs).length > 0 && (<FormItem name="env" label="应用环境">
+        {imageArgs && Object.keys(imageArgs).length > 0 && (<FormItem name="env" label="构建环境" rules={[{ required: true, message: '构建环境不能为空' }]}>
           <Select
             onChange={envChange}
           >
