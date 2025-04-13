@@ -29,7 +29,7 @@ const ProjectInfo = ({
   const [isModalVisible, setIsModalVisible] = useState(false);
 
   const openGitLink = () => {
-    queryGitInfo(data.id).then((res) => {
+    queryGitInfo(data.git_id, data.git_project_id).then((res) => {
       if (res.web_url) {
         window.open(res.web_url);
       }
@@ -62,7 +62,7 @@ const ProjectInfo = ({
         <div className={styles.projectInfo}>
           <div>
             <Title level={3}>
-              #{data.id} {data.name}
+              #{data.git_project_id} {data.name}
               {hasDeveloperPermission(memberRole, filterInfo.envname) && (
                 <a
                   className={styles.editOutlined}

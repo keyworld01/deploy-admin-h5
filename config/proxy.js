@@ -15,7 +15,7 @@ export default {
       },
     },
     '/amsapi/': {
-      target: 'http://10.100.0.24:8000',
+      target: 'http://localhost:80',
       changeOrigin: true,
       pathRewrite: {
         '^/amsapi': ''

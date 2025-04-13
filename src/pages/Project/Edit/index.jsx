@@ -13,6 +13,7 @@ import {
   updateProject,
   postProject,
   getAllProjectLabels,
+  getGits,
 } from './service';
 
 const FormItem = Form.Item;
@@ -25,6 +26,7 @@ const Edit = () => {
   const [form] = Form.useForm();
   const [teams, setTeams] = React.useState([]);
   const [allLabels, setAllLabels] = useState([]);
+  const [gits, setGits] = useState([]);
   const [gitValidatorInfo, setGitValidatorInfo] = useState({
     validateStatus: null,
     help: null,
@@ -111,6 +113,7 @@ const Edit = () => {
       })
       .catch(() => setTeams([]));
     getAllProjectLabels().then((res) => setAllLabels(res || []));
+    getGits().then((res) => setGits(res || []));
     if (projectId) {
       getProjectInfo(projectId).then((res) => {
         const {
@@ -122,6 +125,8 @@ const Edit = () => {
           dev_doc_url: devDocUrl,
           labels,
           owners,
+          git_id,
+          git_project_id
         } = res;
         form.setFieldsValue({
           name,
@@ -132,16 +137,19 @@ const Edit = () => {
           dev_doc_url: devDocUrl,
           labels,
           owner_ids: map(owners, ({ id }) => id),
+          git_id: git_id,
+          git_project_id: git_project_id
         });
       });
     }
   }, []);
 
   const onGit = async () => {
+    const gitProjectId = form.getFieldValue('git_project_id');
     const gitId = form.getFieldValue('git_id');
 
-    if (gitId && gitId.length >= 1) {
-      const data = await getGitInfobyid(gitId);
+    if (gitProjectId && gitProjectId.length >= 1) {
+      const data = await getGitInfobyid(gitId, gitProjectId);
       if (!data || !data.web_url) {
         setGitValidatorInfo({
           validateStatus: 'error',
@@ -170,23 +178,50 @@ const Edit = () => {
           onValuesChange={onValuesChange}
           {...formItemLayout}
         >
+          <FormItem
+            label="Git仓库"
+            name="git_id"
+            rules={[
+              {
+                required: true,
+                message: 'Git 仓库为必填项',
+              },
+            ]}
+          >
+            <Select
+              placeholder="请选择 Git 仓库"
+              disabled={!!projectId}
+              allowClear
+            >
+              {gits.map((item, index) => {
+                return (
+                  <Option key={index} value={item.id}>
+                    {item.host}
+                  </Option>
+                );
+              })}
+            </Select>
+          </FormItem>
+
           {projectId ? (
-            <FormItem label="Git ID">{projectId}</FormItem>
+            <FormItem label="GitRepoID" name="git_project_id">
+              <Input placeholder="请输入项目对应的 GitRepoID" disabled={!!projectId} />
+            </FormItem>
           ) : (
             <FormItem
-              label="Git ID"
-              name="git_id"
+              label="GitRepoID"
+              name="git_project_id"
               onBlur={onGit}
               validateStatus={gitValidatorInfo.validateStatus}
               help={gitValidatorInfo.help}
               rules={[
                 {
                   required: true,
-                  message: '项目对应的Git ID为必填项',
+                  message: '项目对应的 GitRepoID 为必填项',
                 },
               ]}
             >
-              <Input placeholder="请输入项目对应的Git ID" />
+              <Input placeholder="请输入项目对应的 GitRepoID" />
             </FormItem>
           )}
 

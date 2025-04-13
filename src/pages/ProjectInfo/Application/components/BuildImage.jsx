@@ -30,11 +30,14 @@ const UpdateForm = ({
   onCancel: handleUpdateModalVisible,
   modalVisible,
   projectId,
+  gitId,
+  gitProjectId,
   imageArgs,
   imageArgTemplates,
 }) => {
   const [formVals, setFormVals] = useState({
     projectId,
+    gitProjectId,
     branch: [],
   });
   const [form] = Form.useForm();
@@ -46,9 +49,10 @@ const UpdateForm = ({
     if (modalVisible) {
       form.resetFields();
       setBranchLoading(true);
-      queryGitBranch(projectId, null)
+      queryGitBranch(gitId, gitProjectId, null)
         .then((res) => {
           setFormVals({
+            gitProjectId,
             projectId,
             branch: res,
           });
@@ -74,10 +78,11 @@ const UpdateForm = ({
   const onSearch = (val) => {
     setBranchLoading(true);
     // 调用
-    queryGitBranch(projectId, val)
+    queryGitBranch(gitId, gitProjectId, val)
       .then((res) => {
         setFormVals({
           projectId,
+          gitProjectId,
           branch: res,
         });
         setBranchLoading(false);
@@ -88,7 +93,7 @@ const UpdateForm = ({
   };
 
   const branchChange = (value) => {
-    if (!formVals.projectId || !value) {
+    if (!formVals.gitProjectId || !value) {
       return;
     }
 
@@ -113,7 +118,7 @@ const UpdateForm = ({
   };
 
   const envChange = (value) => {
-    if (!formVals.projectId || !value) {
+    if (!formVals.gitProjectId || !value) {
       return;
     }
 
@@ -135,6 +140,7 @@ const UpdateForm = ({
       visible={modalVisible}
       onCancel={() => {
         setFormVals({
+          gitProjectId,
           projectId,
           branch: [],
         });
@@ -156,12 +162,6 @@ const UpdateForm = ({
           env: '',
         }}
       >
-        <FormItem
-          // name="projectId"
-          label="Git Id"
-        >
-          {projectId}
-        </FormItem>
         <FormItem
           name="branch_name"
           label="分支"
