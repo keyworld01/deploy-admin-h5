@@ -120,7 +120,7 @@ const EditFormModal = ({ onSubmit, onCancel, visible, values }) => {
         >
           <Input placeholder="请输入警告联系组" />
         </FormItem>
-        <FormItem label="默认钉钉告警地址" className={Styles.hookSetting}>
+        <FormItem label="默认飞书告警地址" className={Styles.hookSetting}>
           <FormItem
             name="ding_hook"
             rules={[
