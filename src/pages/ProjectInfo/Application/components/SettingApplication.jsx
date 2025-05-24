@@ -29,6 +29,7 @@ const SettingApplication = (props) => {
       form.setFieldsValue({
         enable_branch_change_notification:
           applicationInfo.enable_branch_change_notification || false,
+        disable_ci: applicationInfo.disable_ci || false,
         description: applicationInfo.description || '',
         enable_istio:
           applicationInfo.service_type === RESTFUL
@@ -47,6 +48,7 @@ const SettingApplication = (props) => {
       [envname]: {
         enable_branch_change_notification:
           fieldsValue.enable_branch_change_notification,
+        disable_ci: fieldsValue.disable_ci,
       },
     };
     try {
@@ -76,6 +78,7 @@ const SettingApplication = (props) => {
         form.setFieldsValue({
           description: '',
           enable_branch_change_notification: false,
+          disable_ci: false
         });
       }}
     >
@@ -85,11 +88,19 @@ const SettingApplication = (props) => {
         initialValues={{
           description: '',
           enable_branch_change_notification: false,
+          disable_ci: false
         }}
       >
         <Form.Item
           name="enable_branch_change_notification"
           label="分支变更通知"
+          valuePropName="checked"
+        >
+          <Switch />
+        </Form.Item>
+        <Form.Item
+          name="disable_ci"
+          label="禁用ci"
           valuePropName="checked"
         >
           <Switch />

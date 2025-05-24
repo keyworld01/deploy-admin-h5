@@ -229,6 +229,7 @@ const CreateTasks = (props) => {
               latestSetting?.node_affinity_label_config?.exclusive ?? '',
             disable_high_availability:
               latestSetting?.disable_high_availability ?? true,
+            host_network: latestSetting?.host_network ?? false,
             disable_canary: 
               latestSetting?.disable_canary ?? false,
             termination_grace_period_sec:
@@ -415,6 +416,7 @@ const CreateTasks = (props) => {
       mem: '', // 实例内存规格
       exclusive: '', // 专用标记
       disable_high_availability: true,
+      host_network: false,
       termination_grace_period_sec: 30,
       config_mount_path: '',
       open_cold_storage: false,
@@ -1100,7 +1102,14 @@ const CreateTasks = (props) => {
           ) : null}
           <Form.Item
             name="disable_high_availability"
-            label="关闭实例高可用"
+            label={
+              <>
+                关闭实例高可用&nbsp;
+                <Tooltip title="启用实例高可用后，多个pod不会共存于同一节点，避免节点宕机导致服务不可用">
+                  <QuestionCircleOutlined />
+                </Tooltip>
+              </>
+            }
             valuePropName="checked"
           >
             <Switch />
@@ -1114,7 +1123,20 @@ const CreateTasks = (props) => {
               <Switch />
             </Form.Item>
           )}
-
+          <Form.Item
+            name="host_network"
+            label={
+              <>
+                宿主机网络&nbsp;
+                <Tooltip title="如需通过节点公网IP访问外网，open it">
+                  <QuestionCircleOutlined />
+                </Tooltip>
+              </>
+            }
+            valuePropName="checked"
+          >
+            <Switch />
+          </Form.Item>
           <Form.Item name="termination_grace_period_sec" label="优雅终止时长">
             <Select placeholder="请选择">
               {terminationGracePeriodSecOptions.map((item) => (
