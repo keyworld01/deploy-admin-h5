@@ -519,6 +519,7 @@ const AppContainer = (props) => {
                     size="small"
                     type="primary"
                     className={styles.appWorkButtion}
+                    danger={filterInfo.envname === 'prod'}
                     onClick={() => startDeploy()}
                   >
                     发布

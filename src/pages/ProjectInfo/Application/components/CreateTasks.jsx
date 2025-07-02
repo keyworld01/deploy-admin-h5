@@ -430,6 +430,8 @@ const CreateTasks = (props) => {
     [defaultClusterName, application]
   );
 
+  const isProd = envname === 'prod'
+
   return (
     <Modal
       width={800}
@@ -440,6 +442,9 @@ const CreateTasks = (props) => {
       title="创建任务"
       visible={modalVisible}
       okText="创建"
+      okButtonProps={{
+        danger: isProd,
+      }}
       onOk={create}
       onCancel={() => handleUpdateModalVisible()}
       confirmLoading={confirmLoading}
@@ -484,7 +489,7 @@ const CreateTasks = (props) => {
           )}
         <br />
         <FormItem label="应用名称">{applicationInfo?.name}</FormItem>
-        <FormItem label="环境">{envname}</FormItem>
+        <FormItem label="环境" style={isProd ? { color: 'red' } : {}}>{envname}</FormItem>
 
         <Form.Item label="镜像" required style={{ marginBottom: 0 }}>
           {isManualInput ? (
