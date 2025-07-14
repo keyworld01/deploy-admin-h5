@@ -430,7 +430,8 @@ const CreateTasks = (props) => {
     [defaultClusterName, application]
   );
 
-  const isProd = envname === 'prod'
+  const isProd = envname === 'prod';
+  const isP0Project = projectInfo?.labels?.indexOf('P0') !== -1;
 
   return (
     <Modal
@@ -1119,7 +1120,7 @@ const CreateTasks = (props) => {
           >
             <Switch />
           </Form.Item>
-          {envname === 'prod' && (
+          {envname === 'prod' && !isP0Project && (
             <Form.Item
               name="disable_canary"
               label="关闭金丝雀发布"
