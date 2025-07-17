@@ -234,10 +234,10 @@ class Dashboard extends Component {
                         </Link>
                       </div>
                     }
-                    description={item.desc || ' '}
+                    // description={item.desc || ' '}
                   />
                   <div className={styles.projectItemContent}>
-                    <Link to="/team/list">{item.team_name || ''}</Link>
+                    {/* <Link to="/team/list">{item.team_name || ''}</Link> */}
                     {item.task_create_time && (
                       <span
                         className={styles.datetime}
