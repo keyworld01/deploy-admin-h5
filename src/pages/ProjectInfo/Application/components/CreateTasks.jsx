@@ -1120,11 +1120,12 @@ const CreateTasks = (props) => {
           >
             <Switch />
           </Form.Item>
-          {envname === 'prod' && !isP0Project && (
+          {envname === 'prod' && (
             <Form.Item
               name="disable_canary"
               label="关闭金丝雀发布"
               valuePropName="checked"
+              hidden={isP0Project}
             >
               <Switch />
             </Form.Item>
