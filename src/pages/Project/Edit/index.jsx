@@ -300,7 +300,7 @@ const Edit = () => {
           </FormItem>
 
           <FormItem label="项目标签" name="labels">
-            <Select placeholder="请选择标签" allowClear>
+            <Select mode="multiple" placeholder="请选择标签" allowClear>
               {allLabels.map((item, index) => {
                 return (
                   <Option key={index} value={item.label}>
