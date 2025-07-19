@@ -454,8 +454,8 @@ const AppContainer = (props) => {
 
   return (
     <div className={styles.appContainer}>
-      <Row style={{ flexFlow: 'row' }} className={styles.appContainerHover}>
-        <Col span={6} className={styles.leftContainer}>
+      <Row style={{ flexFlow: 'row', justifyContent: 'space-between'}} className={styles.appContainerHover}>
+        <Col span={4} className={styles.leftContainer}>
           <div className={styles.appInfo}>
             <ServerNamerender type={application.type} />
             <div className={styles.appWork}>
@@ -548,9 +548,9 @@ const AppContainer = (props) => {
               </Space>
             </div>
           </div>
-          <Divider type="vertical" className={styles.appInfoDivider} />
+          {/* <Divider type="vertical" className={styles.appInfoDivider} /> */}
         </Col>
-        <Col span={19} className={styles.runningList}>
+        <Col span={20} className={styles.runningList}>
           <div
             className={
               ['CronJob', 'Worker', 'Service', 'OneTimeJob'].includes(applicationInfo?.type)

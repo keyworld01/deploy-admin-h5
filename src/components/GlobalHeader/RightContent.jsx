@@ -60,7 +60,7 @@ const GlobalHeaderRight = props => {
           <QuestionCircleOutlined />
         </a>
       </Tooltip> */}
-      <Link to="/projects/create">创建项目</Link>
+      {/* <Link to="/projects/create">创建项目</Link> */}
       <Avatar />
       {REACT_APP_ENV && (
         <span>

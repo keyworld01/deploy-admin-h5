@@ -91,6 +91,7 @@ const SettingApplication = (props) => {
           disable_ci: false
         }}
       >
+        <Form.Item label="环境">{filterInfo.envname}</Form.Item>
         <Form.Item
           name="enable_branch_change_notification"
           label="分支变更通知"
