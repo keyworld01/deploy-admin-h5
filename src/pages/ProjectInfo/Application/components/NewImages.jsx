@@ -104,27 +104,8 @@ const NewImages = ({
 
   return (
     <div className={styles.newDocker}>
-      <div style={{ marginTop: '10px' }}>
+      <div style={{ marginTop: '10px', marginBottom: '10px' }}>
         <Row style={{ marginBottom: '5px' }} className={styles.header}>
-          <Col span={3} style={{ padding: '5px' }}>
-            <Space align="center">
-              <span>
-                最新镜像
-                <Divider type="horizontal" className={styles.titleDivider} />
-              </span>
-            </Space>
-          </Col>
-          <Col span={17}>
-            <Space align="center">
-              <Button
-                onClick={loading}
-                className={styles.loadBution}
-                icon={<ReloadOutlined />}
-              >
-                刷新
-              </Button>
-            </Space>
-          </Col>
           <Col span={4}>
             <Space align="center">
               <a href={`/project/${projectId}/image`}>{`镜像列表 >>`} </a>
@@ -189,6 +170,13 @@ const NewImages = ({
           构建镜像
         </Button>
       )}
+      <Button
+        onClick={loading}
+        className={styles.loadButton}
+        icon={<ReloadOutlined />}
+      >
+        刷新
+      </Button>
       <BuildImage
         onSubmit={doBuild}
         onCancel={() => {

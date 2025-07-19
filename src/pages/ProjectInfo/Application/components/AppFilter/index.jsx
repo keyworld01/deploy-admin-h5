@@ -93,7 +93,7 @@ const AppFilter = ({
       </div>
       <div className={styles.content}>
         <Row style={{ marginBottom: '15px' }}>
-          <Col span={21}>
+          <Col span={8}>
             <Radio.Group
               className="analysis-relative-time"
               onChange={setAppEenChange}
@@ -116,36 +116,8 @@ const AppFilter = ({
               </Button>
             )} */}
           </Col>
-
-          <Col span={3}>
-            {hasDeveloperPermission(memberRole, filterInfo.envname) && (
-              <Button
-                type="primary"
-                icon={<PlusOutlined />}
-                onClick={() => createApp(true)}
-              >
-                添加应用
-              </Button>
-            )}
-          </Col>
-        </Row>
-
-        <Row style={{ marginBottom: '5px' }}>
-          <Col span={10}>
-            <Space>
-              {/* {hasDeveloperPermission(memberRole, filterInfo.envname) && (
-                <Button onClick={() => openProjectConfig()}> 最新配置</Button>
-              )} */}
-              <Button
-                icon={<ReloadOutlined />}
-                onClick={() => setReloadingApplications(true)}
-              >
-                刷新
-              </Button>
-            </Space>
-          </Col>
-          <Col span={14}>
-            <Form layout="inline" form={form} initialValues={initialValues}>
+          <Col span={16}>
+            <Form layout="inline" style={{ justifyContent: 'flex-end'}} form={form} initialValues={initialValues}>
               <Form.Item label="应用名称" name="keyword">
                 <Input allowClear placeholder="请输入应用名称" />
               </Form.Item>
@@ -163,7 +135,47 @@ const AppFilter = ({
                   查询
                 </Button>
               </Form.Item>
+              {hasDeveloperPermission(memberRole, filterInfo.envname) && (
+                <Form.Item>
+                  <Button
+                    type="primary"
+                    icon={<PlusOutlined />}
+                    onClick={() => createApp(true)}
+                  >
+                    添加应用
+                  </Button>
+                </Form.Item>
+              )}
             </Form>
+          </Col>
+          {/* <Col span={2}>
+            {hasDeveloperPermission(memberRole, filterInfo.envname) && (
+              <Form.Item>
+                <Button
+                  type="primary"
+                  icon={<PlusOutlined />}
+                  onClick={() => createApp(true)}
+                >
+                  添加应用
+                </Button>
+              </Form.Item>
+            )}
+          </Col> */}
+        </Row>
+
+        <Row style={{ marginBottom: '5px' }}>
+          <Col span={10}>
+            <Space>
+              {/* {hasDeveloperPermission(memberRole, filterInfo.envname) && (
+                <Button onClick={() => openProjectConfig()}> 最新配置</Button>
+              )} */}
+              <Button
+                icon={<ReloadOutlined />}
+                onClick={() => setReloadingApplications(true)}
+              >
+                刷新
+              </Button>
+            </Space>
           </Col>
         </Row>
       </div>

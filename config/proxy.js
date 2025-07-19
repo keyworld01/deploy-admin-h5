@@ -34,14 +34,14 @@ export default {
       },
     },
     '/amsapi/': {
-      target: 'http://notfound',
+      target: 'https://deploy-api-test.stardust-tv.com',
       changeOrigin: true,
       pathRewrite: {
         '^/amsapi': ''
       },
     }
   },
-  pre: {
+  prod: {
     '/api/': {
       target: 'your pre url',
       changeOrigin: true,
@@ -50,7 +50,7 @@ export default {
       },
     },
     '/amsapi/': {
-      target: 'http://notfound',
+      target: 'http://10.100.0.24:8000',
       changeOrigin: true,
       pathRewrite: {
         '^/amsapi': ''
