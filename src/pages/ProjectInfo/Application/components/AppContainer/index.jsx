@@ -62,7 +62,7 @@ import styles from './index.less';
 
 const { confirm } = Modal;
 
-const ServerNamerender = ({ type }) => {
+const ServerNamerender = ({ type, serviceType }) => {
   if (type === 'CronJob') {
     return (
       <div
@@ -92,6 +92,14 @@ const ServerNamerender = ({ type }) => {
         W
       </div>
     );
+  }
+
+  if (serviceType === 'Restful') {
+    return <div className={styles.appMark}>R</div>;
+  }
+
+  if (serviceType === 'GRPC') {
+    return <div className={styles.appMark}>G</div>;
   }
 
   return <div className={styles.appMark}>S</div>;
@@ -457,7 +465,7 @@ const AppContainer = (props) => {
       <Row style={{ flexFlow: 'row', justifyContent: 'space-between'}} className={styles.appContainerHover}>
         <Col span={4} className={styles.leftContainer}>
           <div className={styles.appInfo}>
-            <ServerNamerender type={application.type} />
+            <ServerNamerender type={application.type} serviceType={application.service_type}/>
             <div className={styles.appWork}>
               <Space size={4} className={styles.appBasic}>
                 {hasDeveloperPermission(memberRole, filterInfo.envname) && (
