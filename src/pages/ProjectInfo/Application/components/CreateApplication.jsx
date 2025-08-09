@@ -212,7 +212,7 @@ const CreateApplication = (props) => {
           }
         </FormItem> */}
         {/* sentry类型 */}
-        <Form.Item name="sentry_project_slug_type" label="sentry项目">
+        {/* <Form.Item name="sentry_project_slug_type" label="sentry项目">
           <Select placeholder="请选择">
             {applicationSentryType.map((item) => (
               <Select.Option
@@ -223,7 +223,7 @@ const CreateApplication = (props) => {
               </Select.Option>
             ))}
           </Select>
-        </Form.Item>
+        </Form.Item> */}
         <FormItem
           noStyle
           shouldUpdate={(prevValues, currentValues) =>
@@ -243,13 +243,13 @@ const CreateApplication = (props) => {
             )
           }
         </FormItem>
-        <Form.Item
+        {/* <Form.Item
           name="enable_branch_change_notification"
           label="分支变更通知"
           valuePropName="checked"
         >
           <Switch />
-        </Form.Item>
+        </Form.Item> */}
         <Form.Item name="description" label="备注">
           <Input.TextArea rows={4} placeholder="请输入备注" />
         </Form.Item>

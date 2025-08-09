@@ -371,7 +371,7 @@ const Edit = () => {
             <Input placeholder="请输入项目的API文档地址" />
           </FormItem>
 
-          {!projectId && (
+          {/* {!projectId && (
             <FormItem
               label={
                 <span>
@@ -386,7 +386,7 @@ const Edit = () => {
             >
               <Checkbox />
             </FormItem>
-          )}
+          )} */}
           <FormItem
             {...submitFormLayout}
             style={{
