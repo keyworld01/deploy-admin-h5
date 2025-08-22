@@ -137,14 +137,15 @@ const BatchActionTasks = (props) => {
     oc();
   }, [oc, form]);
 
+  const isProd = filterInfo.envname === 'prod';
   return (
     <Modal
       visible={visible}
       width="550px"
       title={
         <>
-          批量操作
-          <span style={{ color: 'red' }}>{`（${filterInfo.envname}）`}</span>
+          批量发布
+          <span style={isProd ? { color: 'red' } : {}}>{`（${filterInfo.envname}）`}</span>
         </>
       }
       maskClosable={false}
@@ -166,7 +167,7 @@ const BatchActionTasks = (props) => {
               style={{ width: '100%' }}
             />
           </Form.Item>
-          <Form.Item name="cluster_name" label="集群">
+          {/* <Form.Item name="cluster_name" label="集群">
             <Select>
               {map(
                 filter(
@@ -180,8 +181,8 @@ const BatchActionTasks = (props) => {
                 )
               )}
             </Select>
-          </Form.Item>
-          <Form.Item
+          </Form.Item> */}
+          {/* <Form.Item
             name="action"
             label="操作"
             rules={[
@@ -256,7 +257,7 @@ const BatchActionTasks = (props) => {
                 </Option>
               ))}
             </Select>
-          </Form.Item>
+          </Form.Item> */}
         </Spin>
         <Form.Item
           noStyle
@@ -265,7 +266,8 @@ const BatchActionTasks = (props) => {
           }
         >
           {({ getFieldValue }) =>
-            isAllowImage(getFieldValue('action')) && (
+            // isAllowImage(getFieldValue('action')) && (
+            (
               <Form.Item
                 name={['param', 'image_version']}
                 label="镜像"
@@ -279,7 +281,7 @@ const BatchActionTasks = (props) => {
             )
           }
         </Form.Item>
-        <Form.Item
+        {/* <Form.Item
           noStyle
           shouldUpdate={(prevValues, currentValues) =>
             prevValues.action !== currentValues.action
@@ -296,8 +298,8 @@ const BatchActionTasks = (props) => {
               </Form.Item>
             )
           }
-        </Form.Item>
-        <Form.Item
+        </Form.Item> */}
+        {/* <Form.Item
           noStyle
           shouldUpdate={(prevValues, currentValues) =>
             prevValues.param?.setting !== currentValues.param?.setting ||
@@ -316,8 +318,8 @@ const BatchActionTasks = (props) => {
               </Form.Item>
             )
           }
-        </Form.Item>
-        {projectInfo?.config_rename_prefixes?.length > 0 && (
+        </Form.Item> */}
+        {/* {projectInfo?.config_rename_prefixes?.length > 0 && (
           <Form.Item
             noStyle
             shouldUpdate={(prevValues, currentValues) =>
@@ -343,9 +345,9 @@ const BatchActionTasks = (props) => {
               )
             }
           </Form.Item>
-        )}
+        )} */}
 
-        {projectInfo?.config_rename_prefixes?.length > 0 && (
+        {/* {projectInfo?.config_rename_prefixes?.length > 0 && (
           <Form.Item
             noStyle
             shouldUpdate={(prevValues, currentValues) =>
@@ -371,8 +373,8 @@ const BatchActionTasks = (props) => {
               )
             }
           </Form.Item>
-        )}
-        <Form.Item>
+        )} */}
+        {/* <Form.Item>
           <Alert
             type="warning"
             message={
@@ -390,7 +392,7 @@ const BatchActionTasks = (props) => {
               </>
             }
           />
-        </Form.Item>
+        </Form.Item> */}
       </Form>
     </Modal>
   );

@@ -22,7 +22,7 @@ import {
 import styles from './index.less';
 import YamlCopyList from './YamlCopyList';
 import { getProjectConfig } from '../../service';
-import { hasDeveloperPermission } from '../../utils/hasPermission';
+import { hasDeveloperPermission, hasMaintainerPermission } from '../../utils/hasPermission';
 
 const appTypes = [SERVICE, WORKER, CRON_JOB, ONE_TIME_JOB];
 
@@ -106,15 +106,6 @@ const AppFilter = ({
               <Radio.Button value="pre">PRE</Radio.Button>
               <Radio.Button value="prod">PROD</Radio.Button>
             </Radio.Group>
-            {/* {hasDeveloperPermission(memberRole, filterInfo.envname) && (
-              <Button
-                type="primary"
-                style={{ marginLeft: '20px' }}
-                onClick={batchAction}
-              >
-                批量操作
-              </Button>
-            )} */}
           </Col>
           <Col span={16}>
             <Form layout="inline" style={{ justifyContent: 'flex-end'}} form={form} initialValues={initialValues}>
@@ -176,6 +167,15 @@ const AppFilter = ({
                 刷新
               </Button>
             </Space>
+            {hasMaintainerPermission(memberRole, filterInfo.envname) && (
+              <Button
+                type="primary"
+                style={{ marginLeft: '20px' }}
+                onClick={batchAction}
+              >
+                批量发布
+              </Button>
+            )}
           </Col>
         </Row>
       </div>

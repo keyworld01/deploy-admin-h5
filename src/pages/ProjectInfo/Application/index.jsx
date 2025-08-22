@@ -221,11 +221,7 @@ const Application = (props) => {
 
     try {
       await postBatchAction(data);
-      message.success(
-        `批量操作成功,正在进行批量${
-          applicationActions.find((i) => i.value === param.action)?.name
-        }操作`
-      );
+      message.success(`批量发布任务创建成功`);
       setBatchActionTaskVisible(false);
       // 刷新项目数据
       if (timer.current) clearTimeout(timer.current);
