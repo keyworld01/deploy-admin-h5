@@ -6,8 +6,7 @@ COPY package.json .
 
 COPY package-lock.json .
 
-# RUN npm install --registry=https://registry.npmmirror.com 国内源
-RUN npm install
+RUN npm install --registry=https://registry.npmmirror.com
 
 COPY . /app
 
