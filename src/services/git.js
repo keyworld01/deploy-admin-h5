@@ -7,7 +7,7 @@ export function queryGitInfo(gitId, projectId) {
 export function queryGitBranch(gitId, projectId, keyword) {
   const encodedProjectId = encodeURIComponent(projectId);
   // GitHub project_id 含 / 需用 query param 传入，避免路由匹配失败
-  const base = `/amsapi/api/v1/git/${gitId}/projects/branch?project_id=${encodedProjectId}`;
+  const base = `/amsapi/api/v1/git/${gitId}/branches?project_id=${encodedProjectId}`;
   const urlParams = keyword ? `${base}&keyword=${keyword}` : base;
   return ServiceManager.get(urlParams);
 }
